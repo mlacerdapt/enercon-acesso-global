@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENERCON - Acesso Global</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app">
+    <header class="header">
+      <img src="logo.png" alt="ENERCON" class="logo">
+    </header>
+
+    <section class="content">
+      <h1>Acesso aos Sistemas</h1>
+      <p class="subtitle">Selecione o módulo que deseja abrir no navegador</p>
+
+      <div id="systems">
+        <a class="system-card" href="#" target="_blank"><span>Status de Produção</span><span class="arrow">→</span></a>
+        <a class="system-card" href="#" target="_blank"><span>Sistema de Gestão</span><span class="arrow">→</span></a>
+      </div>
+
+      <button id="updateButton" type="button">↻ Atualizar Conexões</button>
+    </section>
+  </main>
+
+  <script>
+    const fallbackSystems = [
+      { "nome": "Status de Produção", "url": "#" },
+      { "nome": "Sistema de Gestão", "url": "#" }
+    ];
+
+    function renderSystems(sistemas) {
+      const container = document.getElementById("systems");
+      container.innerHTML = "";
+      sistemas.forEach((sistema) => {
+        const link = document.createElement("a");
+        link.className = "system-card";
+        link.href = sistema.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.innerHTML = `<span>${sistema.nome}</span><span class="arrow">→</span>`;
+        container.appendChild(link);
+      });
+    }
+
+    async function loadSystems() {
+      try {
+        const response = await fetch(`systems.json?v=${Date.now()}`);
+        if (!response.ok) throw new Error();
+        const data = await response.json();
+        renderSystems(data.sistemas);
+      } catch {
+        renderSystems(fallbackSystems);
+      }
+    }
+
+    document.getElementById("updateButton").addEventListener("click", loadSystems);
+    loadSystems();
+  </script>
+</body>
+</html>
