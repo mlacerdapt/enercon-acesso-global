@@ -168,7 +168,7 @@
                 const a = document.createElement('a');
                 a.className = 'card';
                 
-                if (link && (link.includes("ngrok-free.dev") || link.includes("lhr.life") || link.includes("trycloudflare.com") || link.includes("loca.lt") || link.includes("serveousercontent.com"))) {
+                if (link && !link.includes("localhost") && !link.includes("127.0.0.1") && (link.startsWith("http://") || link.startsWith("https://"))) {
                     a.href = link;
                     a.target = "_blank"; // Abre numa nova aba
                 } else {
