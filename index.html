@@ -1,63 +1,195 @@
 <!DOCTYPE html>
 <html lang="pt-PT">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ENERCON - Acesso Global</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENERCON - Acesso Global</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F4F6F8;
+            margin: 0;
+            padding: 0;
+            color: #111111;
+        }
+        .header {
+            background-color: #FFFFFF;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .header h1 {
+            color: #006c6c;
+            margin: 0;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .subtitle {
+            margin-bottom: 25px;
+        }
+        .subtitle h2 {
+            margin: 0 0 5px 0;
+            font-size: 18px;
+            color: #111111;
+        }
+        .subtitle p {
+            margin: 0;
+            font-size: 14px;
+            color: #666666;
+        }
+        .card {
+            background-color: #FFFFFF;
+            border-left: 5px solid #006c6c;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            cursor: pointer;
+        }
+        .card:hover {
+            background-color: #eaf4f4;
+        }
+        .card:hover .card-title, .card:hover .arrow {
+            color: #006c6c;
+        }
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #111111;
+            margin: 0;
+            transition: color 0.2s;
+        }
+        .arrow {
+            font-size: 20px;
+            color: #006c6c;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .status {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 13px;
+            color: #888;
+        }
+        .disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            border-left: 5px solid #ccc;
+        }
+        .disabled:hover {
+            background-color: #FFFFFF;
+        }
+        .disabled .card-title, .disabled .arrow {
+            color: #888 !important;
+        }
+    </style>
 </head>
 <body>
-  <main class="app">
-    <header class="header">
-      <img src="logo.png" alt="ENERCON" class="logo">
-    </header>
 
-    <section class="content">
-      <h1>Acesso aos Sistemas</h1>
-      <p class="subtitle">Selecione o módulo que deseja abrir no navegador</p>
+    <div class="header">
+        <h1>ENERCON</h1>
+    </div>
 
-      <div id="systems">
-        <a class="system-card" href="#" target="_blank"><span>Status de Produção</span><span class="arrow">→</span></a>
-        <a class="system-card" href="#" target="_blank"><span>Sistema de Gestão</span><span class="arrow">→</span></a>
-      </div>
+    <div class="container">
+        <div class="subtitle">
+            <h2>Acesso aos Sistemas</h2>
+            <p>Selecione o módulo que deseja abrir no navegador</p>
+        </div>
 
-      <button id="updateButton" type="button">↻ Atualizar Conexões</button>
-    </section>
-  </main>
+        <div id="buttons-container">
+            <!-- Os botões serão inseridos aqui via JavaScript -->
+            <p id="loading-msg" style="text-align:center; color:#666;">Verificando conexões na rede...</p>
+        </div>
+        
+        <div class="status">
+            Atualizado automaticamente em tempo real
+        </div>
+    </div>
 
-  <script>
-    const fallbackSystems = [
-      { "nome": "Status de Produção", "url": "#" },
-      { "nome": "Sistema de Gestão", "url": "#" }
-    ];
+    <script>
+        const ntfyUrl = "https://ntfy.sh/enercon_turnos_corte_82300/json?poll=1";
+        
+        const projetos_info = {
+            "1": "Status de Produção",
+            "2": "Dashboard Reclamação",
+            "3": "Sistema de Gestão"
+        };
 
-    function renderSystems(sistemas) {
-      const container = document.getElementById("systems");
-      container.innerHTML = "";
-      sistemas.forEach((sistema) => {
-        const link = document.createElement("a");
-        link.className = "system-card";
-        link.href = sistema.url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.innerHTML = `<span>${sistema.nome}</span><span class="arrow">→</span>`;
-        container.appendChild(link);
-      });
-    }
+        async function fetchUrls() {
+            try {
+                const response = await fetch(ntfyUrl);
+                const text = await response.text();
+                
+                let urlsAtivas = {};
+                
+                // O NTFY retorna linhas JSON separadas. Lemos de baixo pra cima para pegar a mais recente
+                const linhas = text.split('\n').filter(line => line.trim() !== '');
+                
+                for (let i = linhas.length - 1; i >= 0; i--) {
+                    try {
+                        const data = JSON.parse(linhas[i]);
+                        if (data.event === "message" && data.message.includes("{") && data.message.includes("}")) {
+                            urlsAtivas = JSON.parse(data.message);
+                            break; // Achou o JSON válido mais recente, pode parar
+                        }
+                    } catch (e) {
+                        // Ignora linhas que não conseguem ser lidas
+                    }
+                }
+                
+                renderizarBotoes(urlsAtivas);
+                
+            } catch (error) {
+                console.error("Erro ao buscar URLs:", error);
+                document.getElementById('loading-msg').innerText = "Falha ao carregar as conexões. Tente atualizar a página.";
+            }
+        }
 
-    async function loadSystems() {
-      try {
-        const response = await fetch(`systems.json?v=${Date.now()}`);
-        if (!response.ok) throw new Error();
-        const data = await response.json();
-        renderSystems(data.sistemas);
-      } catch {
-        renderSystems(fallbackSystems);
-      }
-    }
+        function renderizarBotoes(urlsAtivas) {
+            const container = document.getElementById('buttons-container');
+            container.innerHTML = ''; // Limpa o "Carregando"
 
-    document.getElementById("updateButton").addEventListener("click", loadSystems);
-    loadSystems();
-  </script>
+            Object.keys(projetos_info).forEach(id => {
+                const nome = projetos_info[id];
+                const link = urlsAtivas[id];
+                
+                const a = document.createElement('a');
+                a.className = 'card';
+                
+                if (link && (link.includes("ngrok-free.dev") || link.includes("lhr.life") || link.includes("trycloudflare.com") || link.includes("loca.lt") || link.includes("serveousercontent.com"))) {
+                    a.href = link;
+                    a.target = "_blank"; // Abre numa nova aba
+                } else {
+                    a.className += ' disabled';
+                    a.onclick = (e) => {
+                        e.preventDefault();
+                        alert("Este sistema parece estar offline no momento. O servidor na empresa precisa ser ligado.");
+                    };
+                }
+
+                a.innerHTML = `
+                    <p class="card-title">${nome}</p>
+                    <span class="arrow">➔</span>
+                `;
+                
+                container.appendChild(a);
+            });
+        }
+
+        // Chama a função assim que a página carrega
+        window.onload = fetchUrls;
+    </script>
 </body>
 </html>
