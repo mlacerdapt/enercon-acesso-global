@@ -6,11 +6,11 @@
     },
     {
       "nome": "Dashboard Reclamação",
-      "url": "https://trans-occurred-entered-mostly.trycloudflare.com"
+      "url": "https://api.trycloudflare.com"
     },
     {
       "nome": "Sistema Gestão de Turno Corte",
-      "url": "https://api.trycloudflare.com"
+      "url": "https://clan-armstrong-librarian-min.trycloudflare.com"
     }
   ]
 }
