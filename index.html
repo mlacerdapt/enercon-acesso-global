@@ -128,33 +128,48 @@
         };
 
         async function fetchUrls() {
+            let urlsAtivas = {};
+            
+            // 1. Tenta carregar diretamente do systems.json do GitHub Pages
             try {
-                const response = await fetch(ntfyUrl);
-                const text = await response.text();
-                
-                let urlsAtivas = {};
-                
-                // O NTFY retorna linhas JSON separadas. Lemos de baixo pra cima para pegar a mais recente
-                const linhas = text.split('\n').filter(line => line.trim() !== '');
-                
-                for (let i = linhas.length - 1; i >= 0; i--) {
-                    try {
-                        const data = JSON.parse(linhas[i]);
-                        if (data.event === "message" && data.message.includes("{") && data.message.includes("}")) {
-                            urlsAtivas = JSON.parse(data.message);
-                            break; // Achou o JSON válido mais recente, pode parar
-                        }
-                    } catch (e) {
-                        // Ignora linhas que não conseguem ser lidas
+                const res = await fetch('./systems.json?_t=' + Date.now());
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && data.sistemas) {
+                        data.sistemas.forEach(item => {
+                            if (item.nome.includes("Produção")) urlsAtivas["1"] = item.url;
+                            if (item.nome.includes("Reclamação")) urlsAtivas["2"] = item.url;
+                            if (item.nome.includes("Gestão") || item.nome.includes("Turno")) urlsAtivas["3"] = item.url;
+                        });
                     }
                 }
-                
-                renderizarBotoes(urlsAtivas);
-                
-            } catch (error) {
-                console.error("Erro ao buscar URLs:", error);
-                document.getElementById('loading-msg').innerText = "Falha ao carregar as conexões. Tente atualizar a página.";
+            } catch (err) {
+                console.log("Tentando fallback via NTFY:", err);
             }
+
+            // 2. Se faltar algum ou systems.json falhar, tenta NTFY como fallback
+            if (Object.keys(urlsAtivas).length === 0) {
+                try {
+                    const response = await fetch(ntfyUrl);
+                    if (response.ok) {
+                        const text = await response.text();
+                        const linhas = text.split('\n').filter(line => line.trim() !== '');
+                        for (let i = linhas.length - 1; i >= 0; i--) {
+                            try {
+                                const data = JSON.parse(linhas[i]);
+                                if (data.event === "message" && data.message.includes("{") && data.message.includes("}")) {
+                                    urlsAtivas = JSON.parse(data.message);
+                                    break;
+                                }
+                            } catch (e) {}
+                        }
+                    }
+                } catch (error) {
+                    console.error("Erro ao buscar URLs no NTFY:", error);
+                }
+            }
+            
+            renderizarBotoes(urlsAtivas);
         }
 
         function renderizarBotoes(urlsAtivas) {
