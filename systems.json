@@ -1,16 +1,12 @@
 {
   "sistemas": [
     {
-      "id": 2,
-      "url": "https://easy-shore-seemed-desperate.trycloudflare.com"
+      "nome": "Dashboard Reclamação",
+      "url": "https://3aedeeeb27d2ba.lhr.life"
     },
     {
-      "id": 1,
-      "url": "https://popularity-purposes-presidential-shelf.trycloudflare.com"
-    },
-    {
-      "id": 3,
-      "url": "https://madrid-cheers-accounts-voted.trycloudflare.com"
+      "nome": "Sistema Gestão de Turno Corte",
+      "url": "https://10d60eb3699855.lhr.life"
     }
   ]
 }
