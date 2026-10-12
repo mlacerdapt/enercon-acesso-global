@@ -1,12 +1,16 @@
 {
   "sistemas": [
     {
+      "nome": "Status de Produção",
+      "url": "https://trained-johnson-dated-rough.trycloudflare.com"
+    },
+    {
       "nome": "Dashboard Reclamação",
-      "url": "https://3aedeeeb27d2ba.lhr.life"
+      "url": "https://advertisement-brunswick-currencies-cached.trycloudflare.com"
     },
     {
       "nome": "Sistema Gestão de Turno Corte",
-      "url": "https://10d60eb3699855.lhr.life"
+      "url": "https://authentication-coordinated-publicity-crossword.trycloudflare.com"
     }
   ]
 }
