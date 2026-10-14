@@ -1,6 +1,10 @@
 {
   "sistemas": [
     {
+      "nome": "Status de Produção",
+      "url": "https://andreas-tee-postcard-hamilton.trycloudflare.com"
+    },
+    {
       "nome": "Dashboard Reclamação",
       "url": "https://efc9775421f3c4.lhr.life"
     },
