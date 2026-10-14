@@ -2,15 +2,15 @@
   "sistemas": [
     {
       "nome": "Status de Produção",
-      "url": "http://192.168.231.221:5000/"
+      "url": "https://qty-launched-beings-discover.trycloudflare.com"
     },
     {
       "nome": "Dashboard Reclamação",
-      "url": "http://192.168.231.221:5001/"
+      "url": "https://extras-tray-stewart-command.trycloudflare.com"
     },
     {
       "nome": "Sistema Gestão de Turno Corte",
-      "url": "http://192.168.231.221:5002/"
+      "url": "https://solaris-insertion-businesses-contamination.trycloudflare.com"
     }
   ]
 }
