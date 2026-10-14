@@ -6,7 +6,7 @@
     },
     {
       "nome": "Dashboard Reclamação",
-      "url": "https://marathon-geneva-wallet-accompanied.trycloudflare.com"
+      "url": "http://192.168.231.221:5001/"
     },
     {
       "nome": "Sistema Gestão de Turno Corte",
