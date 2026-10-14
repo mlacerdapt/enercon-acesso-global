@@ -1,16 +1,12 @@
 {
   "sistemas": [
     {
-      "nome": "Status de Produção",
-      "url": "https://canberra-concern-zus-appropriate.trycloudflare.com"
-    },
-    {
       "nome": "Dashboard Reclamação",
-      "url": "https://extras-tray-stewart-command.trycloudflare.com"
+      "url": "http://192.168.231.221:5001/"
     },
     {
       "nome": "Sistema Gestão de Turno Corte",
-      "url": "https://solaris-insertion-businesses-contamination.trycloudflare.com"
+      "url": "http://192.168.231.221:5002/"
     }
   ]
 }
