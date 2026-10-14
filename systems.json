@@ -2,7 +2,7 @@
   "sistemas": [
     {
       "nome": "Status de Produção",
-      "url": "http://192.168.231.221:5000/"
+      "url": "https://habits-nutrition-rewards-adjustable.trycloudflare.com"
     },
     {
       "nome": "Dashboard Reclamação",
