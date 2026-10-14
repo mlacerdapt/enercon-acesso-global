@@ -2,15 +2,15 @@
   "sistemas": [
     {
       "nome": "Status de Produção",
-      "url": "https://6a24d3e7869df6.lhr.life"
+      "url": "http://192.168.231.221:5000/"
     },
     {
       "nome": "Dashboard Reclamação",
-      "url": "https://591cb9e6d72dff.lhr.life"
+      "url": "http://192.168.231.221:5001/"
     },
     {
       "nome": "Sistema Gestão de Turno Corte",
-      "url": "https://oasis-drop-essay-selected.trycloudflare.com"
+      "url": "http://192.168.231.221:5002/"
     }
   ]
 }
