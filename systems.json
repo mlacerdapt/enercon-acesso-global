@@ -2,7 +2,7 @@
   "sistemas": [
     {
       "nome": "Dashboard Reclamação",
-      "url": "https://analog-resident-straight-europe.trycloudflare.com"
+      "url": "http://192.168.231.221:5001/"
     },
     {
       "nome": "Sistema Gestão de Turno Corte",
