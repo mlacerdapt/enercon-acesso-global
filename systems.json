@@ -2,15 +2,15 @@
   "sistemas": [
     {
       "nome": "Status de Produção",
-      "url": "https://adjacent-chapters-expanded-veterans.trycloudflare.com"
+      "url": "https://pole-vsnet-colleges-rebates.trycloudflare.com"
     },
     {
       "nome": "Dashboard Reclamação",
-      "url": "https://marcus-vendor-stated-asin.trycloudflare.com"
+      "url": "http://192.168.231.221:5001/"
     },
     {
       "nome": "Sistema Gestão de Turno Corte",
-      "url": "https://officials-dense-passed-newton.trycloudflare.com"
+      "url": "http://192.168.231.221:5002/"
     }
   ]
 }
