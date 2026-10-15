@@ -2,15 +2,11 @@
   "sistemas": [
     {
       "nome": "Status de Produção",
-      "url": "https://dental-specifics-freedom-montreal.trycloudflare.com"
+      "url": "https://necessity-pairs-moms-collect.trycloudflare.com"
     },
     {
       "nome": "Dashboard Reclamação",
-      "url": "https://electro-ratios-did-worldcat.trycloudflare.com"
-    },
-    {
-      "nome": "Sistema Gestão de Turno Corte",
-      "url": "https://events-controls-salt-keeping.trycloudflare.com"
+      "url": "http://192.168.231.221:5001/"
     }
   ]
 }
