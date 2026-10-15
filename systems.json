@@ -1,16 +1,8 @@
 {
   "sistemas": [
     {
-      "nome": "Status de Produção",
-      "url": "https://housewares-toilet-lamp-brings.trycloudflare.com"
-    },
-    {
       "nome": "Dashboard Reclamação",
-      "url": "https://maintenance-project-diff-view.trycloudflare.com"
-    },
-    {
-      "nome": "Sistema Gestão de Turno Corte",
-      "url": "https://harrison-violin-telescope-england.trycloudflare.com"
+      "url": "http://192.168.231.221:5001/"
     }
   ]
 }
