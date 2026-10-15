@@ -1,16 +1,8 @@
 {
   "sistemas": [
     {
-      "nome": "Status de Produção",
-      "url": "https://shepherd-matt-equations-touched.trycloudflare.com"
-    },
-    {
-      "nome": "Dashboard Reclamação",
-      "url": "http://192.168.231.221:5001/"
-    },
-    {
       "nome": "Sistema Gestão de Turno Corte",
-      "url": "https://richard-specialized-burning-velocity.trycloudflare.com"
+      "url": "http://192.168.231.221:5002/"
     }
   ]
 }
