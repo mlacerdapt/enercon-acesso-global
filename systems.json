@@ -5,10 +5,6 @@
       "url": "https://literature-briefing-apps-ski.trycloudflare.com"
     },
     {
-      "nome": "Dashboard Reclamação",
-      "url": "http://192.168.231.221:5001/"
-    },
-    {
       "nome": "Sistema Gestão de Turno Corte",
       "url": "http://192.168.231.221:5002/"
     }
