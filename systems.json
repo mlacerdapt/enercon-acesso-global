@@ -2,7 +2,7 @@
   "sistemas": [
     {
       "nome": "Status de Produção",
-      "url": "https://sterling-reached-physics-stones.trycloudflare.com"
+      "url": "http://192.168.231.221:5000/"
     },
     {
       "nome": "Dashboard Reclamação",
