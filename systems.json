@@ -1,6 +1,10 @@
 {
   "sistemas": [
     {
+      "nome": "Status de Produção",
+      "url": "https://sterling-reached-physics-stones.trycloudflare.com"
+    },
+    {
       "nome": "Sistema Gestão de Turno Corte",
       "url": "https://feeding-assumes-signatures-zope.trycloudflare.com"
     }
