@@ -5,10 +5,6 @@
       "url": "http://192.168.231.221:5000/"
     },
     {
-      "nome": "Dashboard Reclamação",
-      "url": "http://192.168.231.221:5001/"
-    },
-    {
       "nome": "Sistema Gestão de Turno Corte",
       "url": "https://blades-results-hawaiian-maria.trycloudflare.com"
     }
