@@ -1,6 +1,10 @@
 {
   "sistemas": [
     {
+      "nome": "Status de Produção",
+      "url": "https://maui-molecular-causes-begun.trycloudflare.com"
+    },
+    {
       "nome": "Dashboard Reclamação",
       "url": "http://192.168.231.221:5001/"
     },
