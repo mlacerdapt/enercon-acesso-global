@@ -1,12 +1,12 @@
 {
   "sistemas": [
     {
-      "nome": "Dashboard Reclamação",
-      "url": "http://192.168.231.221:5001/"
+      "nome": "Status de Produção",
+      "url": "http://192.168.231.221:5000/"
     },
     {
-      "nome": "Sistema Gestão de Turno Corte",
-      "url": "http://192.168.231.221:5002/"
+      "nome": "Dashboard Reclamação",
+      "url": "http://192.168.231.221:5001/"
     }
   ]
 }
