@@ -2,11 +2,7 @@
   "sistemas": [
     {
       "nome": "Status de Produção",
-      "url": "http://192.168.231.221:5000/"
-    },
-    {
-      "nome": "Dashboard Reclamação",
-      "url": "http://192.168.231.221:5001/"
+      "url": "https://stan-dictionary-paste-servers.trycloudflare.com"
     },
     {
       "nome": "Sistema Gestão de Turno Corte",
