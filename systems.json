@@ -5,6 +5,10 @@
       "url": "https://battle-thereafter-streams-ordering.trycloudflare.com"
     },
     {
+      "nome": "Dashboard Reclamação",
+      "url": "http://192.168.231.221:5001/"
+    },
+    {
       "nome": "Sistema Gestão de Turno Corte",
       "url": "https://sword-scenes-base-plaintiff.trycloudflare.com"
     }
