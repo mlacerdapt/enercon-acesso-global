@@ -2,7 +2,11 @@
   "sistemas": [
     {
       "nome": "Status de Produção",
-      "url": "https://teachers-represented-infinite-mix.trycloudflare.com"
+      "url": "https://blue-rings-mirror-fabulous.trycloudflare.com"
+    },
+    {
+      "nome": "Dashboard Reclamação",
+      "url": "http://192.168.231.221:5001/"
     },
     {
       "nome": "Sistema Gestão de Turno Corte",
