@@ -2,7 +2,7 @@
   "sistemas": [
     {
       "nome": "Status de Produção",
-      "url": "https://blue-rings-mirror-fabulous.trycloudflare.com"
+      "url": "http://192.168.231.221:5000/"
     },
     {
       "nome": "Dashboard Reclamação",
@@ -10,7 +10,7 @@
     },
     {
       "nome": "Sistema Gestão de Turno Corte",
-      "url": "https://flow-request-submissions-down.trycloudflare.com"
+      "url": "http://192.168.231.221:5002/"
     }
   ]
 }
